@@ -7,35 +7,35 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from code_assist.tools.base import ToolUseContext
-from code_assist.tools.bash.bash_tool import BashInput, BashTool
-from code_assist.tools.bash.command_semantics import CommandSemantics, classify_command
-from code_assist.tools.bash.destructive_warning import get_destructive_warning
-from code_assist.tools.bash.permissions import (
+from claude_code.tools.base import ToolUseContext
+from claude_code.tools.bash.bash_tool import BashInput, BashTool
+from claude_code.tools.bash.command_semantics import CommandSemantics, classify_command
+from claude_code.tools.bash.destructive_warning import get_destructive_warning
+from claude_code.tools.bash.permissions import (
     get_permission_message,
     should_auto_approve,
 )
-from code_assist.tools.bash.read_only_validation import validate_read_only
-from code_assist.tools.bash.sandbox import should_use_sandbox
-from code_assist.tools.bash.security import (
+from claude_code.tools.bash.read_only_validation import validate_read_only
+from claude_code.tools.bash.sandbox import should_use_sandbox
+from claude_code.tools.bash.security import (
     CommandSafetyResult,
     analyze_command_safety,
 )
-from code_assist.tools.bash.sed_parser import is_sed_edit
-from code_assist.types.message import AssistantMessage
-from code_assist.utils.bash.commands import (
+from claude_code.tools.bash.sed_parser import is_sed_edit
+from claude_code.types.message import AssistantMessage
+from claude_code.utils.bash.commands import (
     DESTRUCTIVE_COMMANDS,
     KNOWN_SAFE_COMMANDS,
     is_known_safe,
     is_potentially_destructive,
 )
-from code_assist.utils.bash.parser import (
+from claude_code.utils.bash.parser import (
     extract_command_name,
     is_piped_command,
     parse_command,
     split_chained_commands,
 )
-from code_assist.utils.bash.shell_quote import join_command, quote_arg
+from claude_code.utils.bash.shell_quote import join_command, quote_arg
 
 
 # ===========================================================================
@@ -442,7 +442,7 @@ class TestBashTool:
         mock_proc.returncode = 0
 
         with patch(
-            "code_assist.tools.bash.bash_tool.asyncio.create_subprocess_shell",
+            "claude_code.tools.bash.bash_tool.asyncio.create_subprocess_shell",
             new=AsyncMock(return_value=mock_proc),
         ):
             result = await tool.call(
@@ -465,7 +465,7 @@ class TestBashTool:
         mock_proc.returncode = 0
 
         with patch(
-            "code_assist.tools.bash.bash_tool.asyncio.create_subprocess_shell",
+            "claude_code.tools.bash.bash_tool.asyncio.create_subprocess_shell",
             new=AsyncMock(return_value=mock_proc),
         ):
             result = await tool.call(
@@ -488,7 +488,7 @@ class TestBashTool:
         mock_proc.pid = 99999
 
         with patch(
-            "code_assist.tools.bash.bash_tool.asyncio.create_subprocess_shell",
+            "claude_code.tools.bash.bash_tool.asyncio.create_subprocess_shell",
             new=AsyncMock(return_value=mock_proc),
         ):
             result = await tool.call(
@@ -526,11 +526,11 @@ class TestBashTool:
 
         with (
             patch(
-                "code_assist.tools.bash.bash_tool.asyncio.create_subprocess_shell",
+                "claude_code.tools.bash.bash_tool.asyncio.create_subprocess_shell",
                 new=AsyncMock(return_value=mock_proc),
             ),
             patch(
-                "code_assist.tools.bash.bash_tool.asyncio.wait_for",
+                "claude_code.tools.bash.bash_tool.asyncio.wait_for",
                 side_effect=mock_wait_for,
             ),
         ):
@@ -549,7 +549,7 @@ class TestBashTool:
         context = ToolUseContext()
 
         with patch(
-            "code_assist.tools.bash.bash_tool.asyncio.create_subprocess_shell",
+            "claude_code.tools.bash.bash_tool.asyncio.create_subprocess_shell",
             new=AsyncMock(side_effect=OSError("command not found")),
         ):
             result = await tool.call(
@@ -564,7 +564,7 @@ class TestBashTool:
     @pytest.mark.asyncio
     async def test_description_with_custom(self) -> None:
         tool = BashTool()
-        from code_assist.tools.base import DescriptionOptions
+        from claude_code.tools.base import DescriptionOptions
 
         desc = await tool.description(
             BashInput(command="ls", description="List files"),
@@ -575,7 +575,7 @@ class TestBashTool:
     @pytest.mark.asyncio
     async def test_description_truncated(self) -> None:
         tool = BashTool()
-        from code_assist.tools.base import DescriptionOptions
+        from claude_code.tools.base import DescriptionOptions
 
         long_cmd = "x" * 100
         desc = await tool.description(
