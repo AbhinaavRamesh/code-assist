@@ -1,7 +1,6 @@
 """Message types for the conversation system.
 
-Ports the TypeScript message types from src/types/message.js and
-src/entrypoints/sdk/coreSchemas.ts to Python dataclasses.
+Message types for the conversation system.
 """
 
 from __future__ import annotations

@@ -1,6 +1,6 @@
 """Streaming tool executor - parallel tool execution during streaming.
 
-Ports the TypeScript StreamingToolExecutor.
+Streaming tool executor for parallel execution during streaming.
 """
 
 from __future__ import annotations

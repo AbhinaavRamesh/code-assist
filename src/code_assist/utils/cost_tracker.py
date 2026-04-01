@@ -1,6 +1,6 @@
 """Session cost tracking.
 
-Ports the TypeScript cost tracker from src/cost-tracker.ts.
+Session cost tracking.
 """
 
 from __future__ import annotations

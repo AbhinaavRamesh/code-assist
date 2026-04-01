@@ -1,6 +1,6 @@
 """Retry logic with exponential backoff.
 
-Ports the TypeScript retry logic from src/services/api/withRetry.ts.
+Retry logic with exponential backoff.
 """
 
 from __future__ import annotations

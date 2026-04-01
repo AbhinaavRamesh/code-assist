@@ -1,6 +1,6 @@
 """Tool orchestration - concurrent/sequential tool execution.
 
-Ports the TypeScript tool orchestration from src/services/tools/.
+Tool orchestration for concurrent/sequential execution.
 """
 
 from __future__ import annotations

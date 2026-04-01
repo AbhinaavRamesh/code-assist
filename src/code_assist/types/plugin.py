@@ -1,6 +1,6 @@
 """Plugin system types.
 
-Ports the TypeScript plugin types from src/types/plugin.ts.
+Plugin system types.
 """
 
 from __future__ import annotations

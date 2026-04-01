@@ -1,6 +1,6 @@
 """Session-level global state (singletons).
 
-Ports the TypeScript bootstrap/state.ts session globals.
+Session-level global state (singletons).
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ from code_assist.types.message import ModelUsage
 class BootstrapState:
     """Session-level global state that persists across the entire session.
 
-    This is the Python equivalent of the TypeScript State type in bootstrap/state.ts.
+    Session-level global state that persists across the entire session.
     Unlike AppState (which is store-managed), this holds singletons like counters,
     telemetry, and session metadata.
     """
