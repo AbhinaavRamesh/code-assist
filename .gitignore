@@ -32,3 +32,6 @@ Thumbs.db
 
 # uv
 uv.lock
+
+# Claude worktrees
+.claude/worktrees/
