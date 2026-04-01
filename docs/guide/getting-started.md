@@ -27,7 +27,7 @@ uv sync
 ### With pip
 
 ```bash
-pip install -e .
+pip install claude-code-py
 ```
 
 ### Development install

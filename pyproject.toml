@@ -1,5 +1,5 @@
 [project]
-name = "claude-code"
+name = "claude-code-py"
 version = "0.1.0"
 description = "AI-powered coding assistant - Python implementation of Claude Code"
 requires-python = ">=3.13"

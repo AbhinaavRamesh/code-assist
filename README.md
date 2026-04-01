@@ -28,7 +28,10 @@ A Python 3.13 AI-powered coding assistant package.
 ## Quick Start
 
 ```bash
-# Install with uv
+# Install from PyPI
+pip install claude-code-py
+
+# Or install from source
 uv pip install -e .
 
 # Set your API key
