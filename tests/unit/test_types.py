@@ -1,12 +1,12 @@
 """Tests for core type definitions."""
 
-from code_assist.types.command import (
+from claude_code.types.command import (
     CommandBase,
     CommandType,
     SkipCommandResult,
     TextCommandResult,
 )
-from code_assist.types.hooks import (
+from claude_code.types.hooks import (
     HookEvent,
     HookInput,
     HookOutcome,
@@ -14,12 +14,12 @@ from code_assist.types.hooks import (
     PromptOption,
     PromptRequest,
 )
-from code_assist.types.ids import (
+from claude_code.types.ids import (
     generate_agent_id,
     generate_session_id,
     to_agent_id,
 )
-from code_assist.types.message import (
+from claude_code.types.message import (
     AssistantMessage,
     SystemMessageSubtype,
     TextBlock,
@@ -30,7 +30,7 @@ from code_assist.types.message import (
     create_system_message,
     create_user_message,
 )
-from code_assist.types.permissions import (
+from claude_code.types.permissions import (
     PermissionAllowDecision,
     PermissionAskDecision,
     PermissionBehavior,
@@ -42,8 +42,8 @@ from code_assist.types.permissions import (
     ToolPermissionContext,
     get_empty_tool_permission_context,
 )
-from code_assist.types.plugin import LoadedPlugin, PluginManifest
-from code_assist.types.tools import (
+from claude_code.types.plugin import LoadedPlugin, PluginManifest
+from claude_code.types.tools import (
     BashProgress,
     GenericToolProgress,
     MCPProgress,
