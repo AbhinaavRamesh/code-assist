@@ -109,7 +109,14 @@ export default withMermaid(
     },
 
     mermaid: {
-      theme: 'neutral',
+      theme: 'default',
+      themeVariables: {
+        fontSize: '16px',
+      },
+    },
+
+    mermaidPlugin: {
+      class: 'mermaid-zoom',
     },
 
     markdown: {
