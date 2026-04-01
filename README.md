@@ -1,6 +1,6 @@
-# code-assist
+# claude-code
 
-AI-powered coding assistant - Python 3.13 implementation.
+AI-powered coding assistant - Python 3.13 package.
 
 > Inspired by Claude Code. Pure research and experimentation purpose only. No enterprise use.
 
@@ -11,10 +11,10 @@ AI-powered coding assistant - Python 3.13 implementation.
 uv sync
 
 # Run
-uv run code-assist --version
+uv run claude-code --version
 
 # Or via module
-uv run python -m code_assist --version
+uv run python -m claude_code --version
 ```
 
 ## Development
@@ -30,7 +30,7 @@ uv run pytest
 uv run ruff check src/ tests/
 
 # Type check
-uv run mypy src/code_assist/
+uv run mypy src/claude_code/
 ```
 
 ## Architecture

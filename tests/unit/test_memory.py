@@ -7,23 +7,23 @@ from unittest.mock import patch
 
 import pytest
 
-from code_assist.memory.find_relevant import find_relevant_memories, should_load_memory
-from code_assist.memory.memdir import (
+from claude_code.memory.find_relevant import find_relevant_memories, should_load_memory
+from claude_code.memory.memdir import (
     MAX_MEMORY_INDEX_LINES,
     add_memory_to_index,
     read_memory_index,
     remove_memory_from_index,
     write_memory_index,
 )
-from code_assist.memory.memory_scan import parse_memory_frontmatter, scan_memory_files
-from code_assist.memory.memory_types import MemoryEntry, MemoryType
-from code_assist.memory.paths import generate_memory_filename, get_memory_dir
+from claude_code.memory.memory_scan import parse_memory_frontmatter, scan_memory_files
+from claude_code.memory.memory_types import MemoryEntry, MemoryType
+from claude_code.memory.paths import generate_memory_filename, get_memory_dir
 
 
 def _patch_memory_dir(tmp_path: Path):
     """Context manager to redirect memory dir to tmp_path."""
     return patch(
-        "code_assist.memory.paths.get_claude_dir",
+        "claude_code.memory.paths.get_claude_dir",
         return_value=tmp_path,
     )
 

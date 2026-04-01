@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from code_assist.config.claude_md import (
+from claude_code.config.claude_md import (
     MemoryFileInfo,
     build_claude_md_context,
     get_claude_mds,
@@ -13,18 +13,18 @@ from code_assist.config.claude_md import (
     get_memory_files,
     is_memory_file_path,
 )
-from code_assist.config.config import (
+from claude_code.config.config import (
     get_default_global_config,
     get_default_project_config,
 )
-from code_assist.config.settings import (
+from claude_code.config.settings import (
     _deep_merge,
     get_default_settings,
     load_settings_file,
     save_settings_file,
 )
-from code_assist.state.app_state import AppState, get_default_app_state
-from code_assist.state.bootstrap import (
+from claude_code.state.app_state import AppState, get_default_app_state
+from claude_code.state.bootstrap import (
     BootstrapState,
     get_bootstrap_state,
     init_bootstrap_state,

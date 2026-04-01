@@ -7,19 +7,19 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from code_assist.services.oauth.auth_code_listener import (
+from claude_code.services.oauth.auth_code_listener import (
     AuthCodeResult,
     start_auth_listener,
 )
-from code_assist.services.oauth.client import (
+from claude_code.services.oauth.client import (
     OAuthTokens,
     PKCEChallenge,
     generate_pkce_challenge,
 )
-from code_assist.services.oauth.crypto import (
+from claude_code.services.oauth.crypto import (
     generate_pkce_challenge as crypto_generate_pkce,
 )
-from code_assist.utils.auth import (
+from claude_code.utils.auth import (
     AuthSource,
     AuthState,
     get_api_key,
@@ -27,7 +27,7 @@ from code_assist.utils.auth import (
     mask_api_key,
     validate_api_key,
 )
-from code_assist.utils.secure_storage.keychain import (
+from claude_code.utils.secure_storage.keychain import (
     SERVICE_NAME,
     delete_credential,
     get_credential,

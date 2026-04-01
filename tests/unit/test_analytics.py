@@ -2,12 +2,12 @@
 
 import pytest
 
-from code_assist.services.analytics.config import (
+from claude_code.services.analytics.config import (
     get_analytics_endpoint,
     is_analytics_enabled,
 )
-from code_assist.services.analytics.growthbook import FeatureFlags, get_feature_flags
-from code_assist.services.analytics.sink import (
+from claude_code.services.analytics.growthbook import FeatureFlags, get_feature_flags
+from claude_code.services.analytics.sink import (
     AnalyticsEvent,
     AnalyticsSink,
     log_event,
@@ -120,7 +120,7 @@ class TestAnalyticsSink:
 class TestModuleLevelLogEvent:
     def test_log_event_via_module(self) -> None:
         """Test the module-level log_event convenience function."""
-        import code_assist.services.analytics.sink as sink_mod
+        import claude_code.services.analytics.sink as sink_mod
 
         sink_mod._sink = None
         log_event("module_event", {"source": "test"})
@@ -171,7 +171,7 @@ class TestFeatureFlags:
 class TestGetFeatureFlags:
     def test_singleton(self) -> None:
         """get_feature_flags returns the same instance."""
-        import code_assist.services.analytics.growthbook as gb_mod
+        import claude_code.services.analytics.growthbook as gb_mod
 
         gb_mod._flags = None
         ff1 = get_feature_flags()

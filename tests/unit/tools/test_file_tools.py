@@ -19,19 +19,19 @@ import time
 
 import pytest
 
-from code_assist.tools.base import DescriptionOptions, ToolResult, ToolUseContext
-from code_assist.tools.file_edit.file_edit_tool import FileEditInput, FileEditTool
-from code_assist.tools.file_read.file_read_tool import FileReadInput, FileReadTool
-from code_assist.tools.file_write.file_write_tool import FileWriteInput, FileWriteTool
-from code_assist.tools.notebook_edit.notebook_edit_tool import (
+from claude_code.tools.base import DescriptionOptions, ToolResult, ToolUseContext
+from claude_code.tools.file_edit.file_edit_tool import FileEditInput, FileEditTool
+from claude_code.tools.file_read.file_read_tool import FileReadInput, FileReadTool
+from claude_code.tools.file_write.file_write_tool import FileWriteInput, FileWriteTool
+from claude_code.tools.notebook_edit.notebook_edit_tool import (
     NotebookEditInput,
     NotebookEditTool,
 )
-from code_assist.types.message import AssistantMessage
-from code_assist.utils.file import expand_path, get_file_size, is_binary_file, suggest_similar_files
-from code_assist.utils.file_history import FileAction, FileHistoryEntry, FileHistoryTracker
-from code_assist.utils.file_read import detect_encoding, read_file_with_line_numbers
-from code_assist.utils.file_state_cache import FileStateCache
+from claude_code.types.message import AssistantMessage
+from claude_code.utils.file import expand_path, get_file_size, is_binary_file, suggest_similar_files
+from claude_code.utils.file_history import FileAction, FileHistoryEntry, FileHistoryTracker
+from claude_code.utils.file_read import detect_encoding, read_file_with_line_numbers
+from claude_code.utils.file_state_cache import FileStateCache
 
 
 # ---------------------------------------------------------------------------
