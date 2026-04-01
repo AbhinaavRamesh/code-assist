@@ -1,6 +1,6 @@
 """Settings management - loading, merging, and persisting settings.
 
-Ports the TypeScript settings system from src/utils/settings/.
+Settings management - loading, merging, and persisting settings.
 """
 
 from __future__ import annotations

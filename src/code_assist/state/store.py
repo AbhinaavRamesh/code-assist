@@ -1,6 +1,6 @@
 """Generic reactive store with pub-sub pattern.
 
-Ports the TypeScript Store from src/state/store.ts.
+Generic reactive store with pub-sub pattern.
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ OnChange = Callable[[T, T], None]  # (new_state, old_state)
 class Store(Generic[T]):
     """Generic reactive state store with subscriber notifications.
 
-    Equivalent to the TypeScript createStore<T>() function.
+    Generic reactive store with subscriber notifications.
     Uses identity comparison (is) to detect state changes.
     """
 

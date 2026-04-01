@@ -1,6 +1,6 @@
 """Anthropic API client wrapper with streaming support.
 
-Ports the TypeScript API client from src/services/api/claude.ts.
+Anthropic API client wrapper with streaming support.
 """
 
 from __future__ import annotations

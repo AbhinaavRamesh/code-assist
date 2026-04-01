@@ -1,6 +1,6 @@
 """API error classification and recovery.
 
-Ports the TypeScript error handling from src/services/api/errors.ts.
+API error classification and recovery.
 """
 
 from __future__ import annotations

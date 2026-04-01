@@ -1,6 +1,6 @@
 """Tool base types and protocols.
 
-Ports the TypeScript Tool type from src/Tool.ts.
+Tool base types and protocols.
 """
 
 from __future__ import annotations
@@ -95,7 +95,7 @@ class SearchOrReadInfo:
 class ToolUseContext:
     """Context provided to tools during execution.
 
-    Ports the TypeScript ToolUseContext from src/Tool.ts.
+    Context provided to tools during execution.
     """
 
     # Core options
@@ -175,7 +175,7 @@ CanUseToolFn = Callable[..., Any]
 class Tool(Protocol):
     """Protocol defining the interface for all tools.
 
-    Ports the TypeScript Tool<Input, Output, P> from src/Tool.ts.
+    Protocol defining the interface for all tools.
     Each tool implementation must satisfy this protocol.
     """
 

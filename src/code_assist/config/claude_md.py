@@ -1,6 +1,6 @@
 """CLAUDE.md file discovery and parsing.
 
-Ports the TypeScript claudemd.ts from src/utils/claudemd.ts.
+CLAUDE.md file discovery and parsing.
 """
 
 from __future__ import annotations

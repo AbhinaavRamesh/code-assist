@@ -1,6 +1,6 @@
 """Application state definition.
 
-Ports the TypeScript AppState from src/state/AppStateStore.ts.
+Application state definition.
 """
 
 from __future__ import annotations
@@ -159,7 +159,7 @@ class FooterItem:
 class AppState:
     """Complete application state.
 
-    Matches the TypeScript AppState from AppStateStore.ts.
+    Complete application state.
     Fields are organized into immutable (config-like) and mutable (runtime) groups.
     """
 

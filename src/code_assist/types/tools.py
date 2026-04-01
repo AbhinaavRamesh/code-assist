@@ -1,6 +1,6 @@
 """Tool progress data types.
 
-Ports the TypeScript tool progress types from src/types/tools.ts.
+Tool progress data types.
 """
 
 from __future__ import annotations

@@ -1,6 +1,6 @@
 """Permission system types.
 
-Ports the TypeScript permission types from src/types/permissions.ts.
+Permission system types.
 """
 
 from __future__ import annotations

@@ -1,6 +1,6 @@
 """Command types for slash commands.
 
-Ports the TypeScript command types from src/types/command.ts.
+Command types for slash commands.
 """
 
 from __future__ import annotations

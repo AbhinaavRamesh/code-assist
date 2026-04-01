@@ -1,6 +1,6 @@
 """Single tool execution with permission checking.
 
-Ports the TypeScript tool execution from src/services/tools/.
+Single tool execution with permission checking.
 """
 
 from __future__ import annotations

@@ -1,6 +1,6 @@
 """Hook system types.
 
-Ports the TypeScript hook types from src/types/hooks.ts.
+Hook system types.
 """
 
 from __future__ import annotations

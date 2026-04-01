@@ -1,6 +1,6 @@
 """Global and project configuration management.
 
-Ports the TypeScript config from src/utils/config.ts.
+Global and project configuration management.
 """
 
 from __future__ import annotations

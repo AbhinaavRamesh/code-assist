@@ -1,6 +1,6 @@
 """Tool registry - assembles all available tools.
 
-Ports the TypeScript tools.ts (getAllBaseTools).
+Tool registry - assembles all available tools.
 """
 
 from __future__ import annotations
