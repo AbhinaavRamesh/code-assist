@@ -5,6 +5,7 @@ export default withMermaid(
   defineConfig({
     title: 'Claude Code',
     description: 'AI-powered coding assistant - Python package',
+    base: '/claude-code/',
     lang: 'en-US',
     cleanUrls: true,
     lastUpdated: true,
@@ -98,8 +99,8 @@ export default withMermaid(
       },
 
       footer: {
-        message: 'Released under the MIT License.',
-        copyright: 'Copyright 2024-present Abhinaav Ramesh',
+        message: 'Research and educational use only. Inspired by Claude Code by Anthropic. All original rights reserved by Anthropic.',
+        copyright: 'Copyright 2025-present Abhinaav Ramesh',
       },
 
       outline: {
