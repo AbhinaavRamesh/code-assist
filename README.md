@@ -93,18 +93,24 @@ graph TB
 
 ---
 
+## Credits & Attribution
+
+> **This project is inspired by [Claude Code](https://docs.anthropic.com/en/docs/claude-code) by [Anthropic](https://www.anthropic.com/).**
+>
+> Claude Code is a product of Anthropic. All original concepts, design patterns, and intellectual property belong to **Anthropic and Claude**. This Python implementation is an independent educational project and is **not affiliated with, endorsed by, or connected to Anthropic in any way**.
+
 ## Disclaimer
 
-> **This project is provided strictly for technical research, study, and educational purposes.**
+> **This project is provided strictly for technical research, study, and educational exchange among enthusiasts.**
 >
-> - **No commercial use** of any kind is permitted
+> - **Commercial use is strictly prohibited.** No individual, organization, or entity may use this content for commercial purposes, profit-making activities, or any unauthorized scenarios
 > - **No enterprise deployment** is authorized
-> - This software is not affiliated with or endorsed by Anthropic
+> - **All rights to the original Claude Code product are reserved by Anthropic**
 > - No warranty is provided; use at your own risk
-> - If any content infringes upon rights or interests, please open an issue for removal
+> - If any content infringes upon your legal rights, intellectual property, or other interests, please open an issue and we will verify and remove it immediately
 >
 > By using this software, you agree to these terms.
 
 ## License
 
-Research and educational use only. See [Disclaimer](#disclaimer).
+Research and educational use only. Not for commercial use. See [Credits](#credits--attribution) and [Disclaimer](#disclaimer).
