@@ -5,59 +5,24 @@ Claude Code is structured as a layered system: a CLI shell wraps a `QueryEngine`
 ## System Architecture
 
 ```mermaid
-graph TB
-    subgraph User Layer
-        CLI["CLI Entry Point<br/>(click)"]
-        TUI["Terminal UI<br/>(textual / rich)"]
-    end
+graph TD
+    CLI["CLI (click)"] --> QE["QueryEngine"]
+    TUI["TUI (textual)"] --> QE
 
-    subgraph Core Layer
-        QE["QueryEngine"]
-        QL["Query Loop"]
-        SA["StreamAccumulator"]
-        PI["ProcessInput"]
-    end
+    QE --> API["Anthropic API"]
+    QE --> TOOLS["Tool Executor"]
+    QE --> CONFIG["Config & Memory"]
 
-    subgraph Services Layer
-        API["Anthropic API Client"]
-        TE["Tool Execution Engine"]
-        HE["Hook Engine"]
-    end
+    TOOLS --> REG["33 Tools"]
+    TOOLS --> HOOKS["Hook Engine"]
+    TOOLS --> PERMS["Permissions"]
 
-    subgraph Tool Layer
-        TR["Tool Registry"]
-        BT["BashTool"]
-        FR["FileReadTool"]
-        FW["FileWriteTool"]
-        FE["FileEditTool"]
-        GT["GlobTool"]
-        GR["GrepTool"]
-        NE["NotebookEditTool"]
-        WF["WebFetchTool"]
-        WS["WebSearchTool"]
-        TS["ToolSearchTool"]
-        MCP["MCP Tools"]
-    end
-
-    subgraph Config Layer
-        SET["Settings<br/>(global/project/local)"]
-        CMD["CLAUDE.md Discovery"]
-        MEM["Memory System"]
-        PERM["Permission Engine"]
-    end
-
-    CLI --> QE
-    TUI --> QE
-    QE --> PI
-    QE --> QL
-    QL --> API
-    QL --> SA
-    QL --> TE
-    TE --> TR
-    TE --> HE
-    TR --> BT & FR & FW & FE & GT & GR & NE & WF & WS & TS & MCP
-    QE --> SET
-    QE --> CMD
+    REG --> FILES["File R/W/Edit"]
+    REG --> BASH["Bash"]
+    REG --> SEARCH["Glob / Grep"]
+    REG --> WEB["Web Fetch/Search"]
+    REG --> AGENTS["Agent / Tasks"]
+    REG --> MCP["MCP Tools"]
     QE --> MEM
     TE --> PERM
 ```

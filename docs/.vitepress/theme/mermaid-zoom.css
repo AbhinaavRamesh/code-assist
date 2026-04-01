@@ -1,0 +1,62 @@
+/* Make mermaid diagrams zoomable on click */
+.mermaid {
+  cursor: zoom-in;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+  transition: all 0.3s ease;
+  max-width: 100%;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Zoomed state - full width with scroll */
+.mermaid.mermaid-zoomed {
+  cursor: zoom-out;
+  overflow: auto;
+  position: relative;
+  max-height: 90vh;
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.mermaid.mermaid-zoomed svg {
+  max-width: none;
+  transform: scale(1.5);
+  transform-origin: top left;
+}
+
+/* Zoom hint */
+.mermaid::after {
+  content: 'Click to zoom';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  background: var(--vp-c-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.mermaid:hover::after {
+  opacity: 1;
+}
+
+.mermaid.mermaid-zoomed::after {
+  content: 'Click to close';
+}
+
+/* Make container relative for the hint */
+.mermaid {
+  position: relative;
+}
