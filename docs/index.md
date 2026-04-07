@@ -11,7 +11,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/abhinaavramesh/claude-code
+      link: https://github.com/abhinaavramesh/code-assist
 
 features:
   - icon: "\U0001F527"

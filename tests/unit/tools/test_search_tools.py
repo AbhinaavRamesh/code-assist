@@ -10,13 +10,13 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import httpx
 import pytest
 
-from claude_code.tools.base import ToolDef, ToolResult, ToolUseContext
-from claude_code.tools.glob_tool.glob_tool import GlobInput, GlobTool
-from claude_code.tools.grep_tool.grep_tool import GrepInput, GrepTool
-from claude_code.tools.tool_search.tool_search_tool import ToolSearchInput, ToolSearchTool
-from claude_code.tools.web_fetch.web_fetch_tool import WebFetchInput, WebFetchTool
-from claude_code.tools.web_search.web_search_tool import WebSearchInput, WebSearchTool
-from claude_code.types.message import AssistantMessage
+from code_assist.tools.base import ToolDef, ToolResult, ToolUseContext
+from code_assist.tools.glob_tool.glob_tool import GlobInput, GlobTool
+from code_assist.tools.grep_tool.grep_tool import GrepInput, GrepTool
+from code_assist.tools.tool_search.tool_search_tool import ToolSearchInput, ToolSearchTool
+from code_assist.tools.web_fetch.web_fetch_tool import WebFetchInput, WebFetchTool
+from code_assist.tools.web_search.web_search_tool import WebSearchInput, WebSearchTool
+from code_assist.types.message import AssistantMessage
 
 
 # ---------------------------------------------------------------------------
@@ -119,7 +119,7 @@ class TestGlobTool:
     @pytest.mark.asyncio
     async def test_glob_truncation(self, tmp_path: Path) -> None:
         """Test that results are truncated beyond MAX_RESULTS."""
-        from claude_code.tools.glob_tool.glob_tool import MAX_RESULTS
+        from code_assist.tools.glob_tool.glob_tool import MAX_RESULTS
 
         # We won't create 1001 files; just verify the truncation logic path
         # by testing with a small number of files that it returns correctly

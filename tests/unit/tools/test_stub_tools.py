@@ -9,36 +9,36 @@ from __future__ import annotations
 import pytest
 from pydantic import BaseModel
 
-from claude_code.tools.base import ToolDef
+from code_assist.tools.base import ToolDef
 
 
 # ---------------------------------------------------------------------------
 # Tool class imports
 # ---------------------------------------------------------------------------
 
-from claude_code.tools.task_tools.task_create import TaskCreateTool
-from claude_code.tools.task_tools.task_get import TaskGetTool
-from claude_code.tools.task_tools.task_update import TaskUpdateTool
-from claude_code.tools.task_tools.task_list import TaskListTool
-from claude_code.tools.task_tools.task_stop import TaskStopTool
-from claude_code.tools.task_tools.task_output import TaskOutputTool
-from claude_code.tools.agent_tool.agent_tool import AgentTool
-from claude_code.tools.plan_mode.enter_plan_mode import EnterPlanModeTool
-from claude_code.tools.plan_mode.exit_plan_mode import ExitPlanModeTool
-from claude_code.tools.ask_user.ask_user_question import AskUserQuestionTool
-from claude_code.tools.mcp_tool.mcp_tool import MCPTool
-from claude_code.tools.skill_tool.skill_tool import SkillTool
-from claude_code.tools.worktree.enter_worktree import EnterWorktreeTool
-from claude_code.tools.worktree.exit_worktree import ExitWorktreeTool
-from claude_code.tools.send_message.send_message_tool import SendMessageTool
-from claude_code.tools.team_tools.team_create import TeamCreateTool
-from claude_code.tools.team_tools.team_delete import TeamDeleteTool
-from claude_code.tools.config_tool.config_tool import ConfigTool
-from claude_code.tools.todo_write.todo_write_tool import TodoWriteTool
-from claude_code.tools.cron_tools.cron_create import CronCreateTool
-from claude_code.tools.cron_tools.cron_delete import CronDeleteTool
-from claude_code.tools.cron_tools.cron_list import CronListTool
-from claude_code.tools.lsp_tool.lsp_tool import LSPTool
+from code_assist.tools.task_tools.task_create import TaskCreateTool
+from code_assist.tools.task_tools.task_get import TaskGetTool
+from code_assist.tools.task_tools.task_update import TaskUpdateTool
+from code_assist.tools.task_tools.task_list import TaskListTool
+from code_assist.tools.task_tools.task_stop import TaskStopTool
+from code_assist.tools.task_tools.task_output import TaskOutputTool
+from code_assist.tools.agent_tool.agent_tool import AgentTool
+from code_assist.tools.plan_mode.enter_plan_mode import EnterPlanModeTool
+from code_assist.tools.plan_mode.exit_plan_mode import ExitPlanModeTool
+from code_assist.tools.ask_user.ask_user_question import AskUserQuestionTool
+from code_assist.tools.mcp_tool.mcp_tool import MCPTool
+from code_assist.tools.skill_tool.skill_tool import SkillTool
+from code_assist.tools.worktree.enter_worktree import EnterWorktreeTool
+from code_assist.tools.worktree.exit_worktree import ExitWorktreeTool
+from code_assist.tools.send_message.send_message_tool import SendMessageTool
+from code_assist.tools.team_tools.team_create import TeamCreateTool
+from code_assist.tools.team_tools.team_delete import TeamDeleteTool
+from code_assist.tools.config_tool.config_tool import ConfigTool
+from code_assist.tools.todo_write.todo_write_tool import TodoWriteTool
+from code_assist.tools.cron_tools.cron_create import CronCreateTool
+from code_assist.tools.cron_tools.cron_delete import CronDeleteTool
+from code_assist.tools.cron_tools.cron_list import CronListTool
+from code_assist.tools.lsp_tool.lsp_tool import LSPTool
 
 
 # ---------------------------------------------------------------------------
@@ -148,7 +148,7 @@ class TestRegistryIncludesAllStubTools:
     """Verify the registry returns all stub tools."""
 
     def test_registry_contains_stub_tools(self) -> None:
-        from claude_code.tools.registry import get_all_tools
+        from code_assist.tools.registry import get_all_tools
 
         tools = get_all_tools()
         tool_names = {t.name for t in tools}
@@ -158,7 +158,7 @@ class TestRegistryIncludesAllStubTools:
 
     def test_registry_tool_count(self) -> None:
         """Registry should have at least 10 existing + 23 new = 33 tools."""
-        from claude_code.tools.registry import get_all_tools
+        from code_assist.tools.registry import get_all_tools
 
         tools = get_all_tools()
         assert len(tools) >= 33

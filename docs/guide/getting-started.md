@@ -1,6 +1,6 @@
 # Getting Started
 
-This guide walks you through installing `claude-code`, configuring your API key, and running your first interactive session.
+This guide walks you through installing `code-assist`, configuring your API key, and running your first interactive session.
 
 ## Prerequisites
 
@@ -17,8 +17,8 @@ This guide walks you through installing `claude-code`, configuring your API key,
 
 ```bash
 # Clone the repository
-git clone https://github.com/abhinaavramesh/claude-code.git
-cd claude-code
+git clone https://github.com/abhinaavramesh/code-assist.git
+cd code-assist
 
 # Install with uv
 uv sync
@@ -27,7 +27,7 @@ uv sync
 ### With pip
 
 ```bash
-pip install claude-code-py
+pip install code-assist
 ```
 
 ### Development install
@@ -51,7 +51,7 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 ### 2. Keyring (system credential store)
 
 ```bash
-# Store once — claude-code reads it automatically via the `keyring` library
+# Store once — code-assist reads it automatically via the `keyring` library
 python -m keyring set anthropic api_key
 # Paste your key at the prompt
 ```
@@ -68,7 +68,7 @@ For CI or non-interactive use, always set the environment variable. The keyring 
 
 ```bash
 # Launch the interactive TUI
-claude-code
+code-assist
 ```
 
 You will see a prompt powered by `prompt-toolkit` and `rich`. Type a natural-language request:
@@ -95,7 +95,7 @@ Claude Code will:
 ### Edit a file
 
 ```
-> Add type hints to the `load_settings_file` function in src/claude_code/config/settings.py
+> Add type hints to the `load_settings_file` function in src/code_assist/config/settings.py
 ```
 
 ### Run a command
@@ -116,15 +116,15 @@ The package registers a single CLI command via `pyproject.toml`:
 
 ```toml
 [project.scripts]
-claude-code = "claude_code.cli.main:cli"
+code-assist = "code_assist.cli.main:cli"
 ```
 
-This means after installation you can simply run `claude-code` anywhere on your system.
+This means after installation you can simply run `code-assist` anywhere on your system.
 
 ## Project Layout
 
 ```
-src/claude_code/
+src/code_assist/
   cli/          # Click-based CLI entry point
   config/       # Settings, constants, CLAUDE.md discovery
   core/         # QueryEngine, query loop, streaming

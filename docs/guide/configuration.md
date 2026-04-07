@@ -69,7 +69,7 @@ CLAUDE.md files are the primary way to give Claude Code persistent instructions.
 
 ### File Discovery Order
 
-1. **Managed** — `/etc/claude-code/CLAUDE.md` (organization-wide, admin-controlled)
+1. **Managed** — `/etc/code-assist/CLAUDE.md` (organization-wide, admin-controlled)
 2. **User** — `~/.claude/CLAUDE.md` (personal, applies to all projects)
 3. **Project** — `CLAUDE.md` or `.claude/CLAUDE.md` in the project root
 4. **Rules** — `.claude/rules/*.md` (modular project rules)
@@ -118,7 +118,7 @@ Each file is loaded and appended to the system prompt.
 Memory files exceeding `MAX_MEMORY_CHARACTER_COUNT` (40,000 characters) are flagged. You can detect oversized files with:
 
 ```python
-from claude_code.config.claude_md import get_memory_files, get_large_memory_files
+from code_assist.config.claude_md import get_memory_files, get_large_memory_files
 
 files = get_memory_files("/path/to/project")
 large = get_large_memory_files(files)
@@ -155,7 +155,7 @@ These are injected into the process environment at startup.
 Feature flags are checked via `is_feature_enabled(name)`:
 
 ```python
-from claude_code.config.constants import is_feature_enabled
+from code_assist.config.constants import is_feature_enabled
 
 if is_feature_enabled("EXPERIMENTAL_TOOLS"):
     # Enable experimental tool set
@@ -262,7 +262,7 @@ No settings files needed. Claude Code uses built-in defaults with the `default` 
 ## Programmatic Access
 
 ```python
-from claude_code.config.settings import (
+from code_assist.config.settings import (
     load_merged_settings,
     get_permission_rules,
     get_hooks_settings,

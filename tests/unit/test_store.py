@@ -1,6 +1,6 @@
 """Tests for the reactive store."""
 
-from claude_code.state.store import Store, create_store
+from code_assist.state.store import Store, create_store
 
 
 class TestStore:

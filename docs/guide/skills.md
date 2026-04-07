@@ -58,7 +58,7 @@ Skills are defined in `settings.json` under the `skills` key:
 
 ```
 > /review-pr
-> /write-tests src/claude_code/core/query.py
+> /write-tests src/code_assist/core/query.py
 ```
 
 Skills appear alongside built-in commands in the `/help` listing and in autocomplete.
@@ -94,7 +94,7 @@ Skills appear alongside built-in commands in the `/help` listing and in autocomp
 }
 ```
 
-Usage: `/migrate-function src/claude_code/config/settings.py`
+Usage: `/migrate-function src/code_assist/config/settings.py`
 
 ### 3. Skill with forked context
 
@@ -168,7 +168,7 @@ Plugins are listed in `settings.json`:
 ```json
 {
   "plugins": [
-    "my-claude-code-plugin",
+    "my-code-assist-plugin",
     "another-plugin"
   ]
 }
@@ -188,11 +188,11 @@ class LoadedPlugin:
 
 ### Creating a Plugin
 
-1. **Create a Python package** with a `claude_code_plugin` entry point:
+1. **Create a Python package** with a `code_assist_plugin` entry point:
 
 ```toml
 # pyproject.toml
-[project.entry-points."claude_code.plugins"]
+[project.entry-points."code_assist.plugins"]
 my_plugin = "my_plugin:manifest"
 ```
 
@@ -200,7 +200,7 @@ my_plugin = "my_plugin:manifest"
 
 ```python
 # my_plugin/__init__.py
-from claude_code.types.plugin import PluginManifest
+from code_assist.types.plugin import PluginManifest
 
 manifest = PluginManifest(
     name="my-plugin",
@@ -214,7 +214,7 @@ manifest = PluginManifest(
 
 3. **Implement tools and commands** following the standard `ToolDef` and `CommandBase` patterns.
 
-4. **Install the package** in the same environment as claude-code:
+4. **Install the package** in the same environment as code-assist:
 
 ```bash
 uv pip install -e ./my-plugin
@@ -244,7 +244,7 @@ Commands (including skill-generated ones) are tracked by their source:
 
 | Source | Enum Value | Description |
 |---|---|---|
-| Bundled | `bundled` | Ships with claude-code core |
+| Bundled | `bundled` | Ships with code-assist core |
 | Managed | `managed` | Organization-managed commands |
 | Skills | `skills` | User-defined skills from settings.json |
 | Plugin | `plugin` | Loaded from installed plugins |

@@ -10,40 +10,40 @@ import os
 
 import pytest
 
-from claude_code.permissions.denial_tracking import DenialTracker
-from claude_code.permissions.filesystem import (
+from code_assist.permissions.denial_tracking import DenialTracker
+from code_assist.permissions.filesystem import (
     SYSTEM_PATHS,
     is_path_within_project,
     is_path_writable,
 )
-from claude_code.permissions.permission_mode import (
+from code_assist.permissions.permission_mode import (
     allows_tool,
     allows_writes,
     is_auto_mode,
     is_bypass_mode,
     is_plan_mode,
 )
-from claude_code.permissions.permission_result import (
+from code_assist.permissions.permission_result import (
     create_allow_result,
     create_ask_result,
     create_deny_result,
     is_allowed,
     is_denied,
 )
-from claude_code.permissions.permission_rule import (
+from code_assist.permissions.permission_rule import (
     find_matching_rules,
     get_highest_priority_rule,
     match_rule,
 )
-from claude_code.permissions.permission_setup import (
+from code_assist.permissions.permission_setup import (
     create_permission_context,
     extract_permission_rules,
 )
-from claude_code.permissions.shell_rule_matching import (
+from code_assist.permissions.shell_rule_matching import (
     matches_shell_pattern,
     normalize_rule_pattern,
 )
-from claude_code.types.permissions import (
+from code_assist.types.permissions import (
     PermissionBehavior,
     PermissionMode,
     PermissionRule,
@@ -237,7 +237,7 @@ class TestFilesystem:
         assert is_path_within_project(outside, tmp_project) is False
 
     def test_is_path_within_additional_dirs(self, tmp_project: str) -> None:
-        from claude_code.types.permissions import AdditionalWorkingDirectory
+        from code_assist.types.permissions import AdditionalWorkingDirectory
 
         extra_dir = "/tmp/extra-working-dir"
         additional = {

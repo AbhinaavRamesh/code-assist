@@ -16,7 +16,7 @@ Commands can be loaded from multiple sources, identified by `CommandLoadedFrom`:
 
 | Source | Description |
 |---|---|
-| `bundled` | Ships with claude-code core |
+| `bundled` | Ships with code-assist core |
 | `managed` | Organization-managed commands |
 | `skills` | User-defined skills (see [Skills](/guide/skills)) |
 | `plugin` | Loaded from installed plugins |
@@ -85,7 +85,7 @@ Commands can be loaded from multiple sources, identified by `CommandLoadedFrom`:
 | Command | Type | Description |
 |---|---|---|
 | `/help` | local | Show available commands and usage |
-| `/version` | local | Show the claude-code version |
+| `/version` | local | Show the code-assist version |
 | `/debug` | local | Toggle debug mode (verbose API logging) |
 | `/cost` | local | Show cumulative token usage and estimated cost |
 | `/doctor` | local | Run diagnostics (API connectivity, tool health, etc.) |
@@ -127,7 +127,7 @@ class CommandBase:
 ### Prompt commands with context
 
 ```
-> /review src/claude_code/core/query.py
+> /review src/code_assist/core/query.py
 ```
 
 ::: tip
