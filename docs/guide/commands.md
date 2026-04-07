@@ -1,6 +1,6 @@
 # Commands
 
-Claude Code supports **slash commands** — typed as `/command` in the prompt. Commands are either **local** (executed immediately on the client) or **prompt** (expanded into an API query).
+code-assist supports **slash commands** — typed as `/command` in the prompt. Commands are either **local** (executed immediately on the client) or **prompt** (expanded into an API query).
 
 ## Command Types
 

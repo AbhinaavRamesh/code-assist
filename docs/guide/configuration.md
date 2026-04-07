@@ -1,6 +1,6 @@
 # Configuration
 
-Claude Code uses a layered configuration system. Settings are loaded from multiple files and merged with deep-merge semantics (higher priority wins).
+code-assist uses a layered configuration system. Settings are loaded from multiple files and merged with deep-merge semantics (higher priority wins).
 
 ## Settings File Locations
 
@@ -65,7 +65,7 @@ def _deep_merge(base: dict, override: dict) -> dict:
 
 ## CLAUDE.md System
 
-CLAUDE.md files are the primary way to give Claude Code persistent instructions. They are discovered automatically and injected into the system prompt.
+CLAUDE.md files are the primary way to give code-assist persistent instructions. They are discovered automatically and injected into the system prompt.
 
 ### File Discovery Order
 
@@ -168,7 +168,7 @@ The function reads `CODE_ASSIST_<NAME>` from the environment.
 
 ### Minimal (defaults only)
 
-No settings files needed. Claude Code uses built-in defaults with the `default` permission mode.
+No settings files needed. code-assist uses built-in defaults with the `default` permission mode.
 
 ### Python Development
 

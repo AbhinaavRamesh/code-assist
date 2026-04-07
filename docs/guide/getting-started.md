@@ -40,7 +40,7 @@ This pulls in `ruff`, `mypy`, `pytest`, `pytest-asyncio`, `pytest-mock`, `respx`
 
 ## API Key Setup
 
-Claude Code needs an Anthropic API key. You can provide it in three ways (checked in order):
+code-assist needs an Anthropic API key. You can provide it in three ways (checked in order):
 
 ### 1. Environment variable
 
@@ -77,7 +77,7 @@ You will see a prompt powered by `prompt-toolkit` and `rich`. Type a natural-lan
 > Explain the structure of this project and list the main modules.
 ```
 
-Claude Code will:
+code-assist will:
 
 1. Build the **system prompt** from CLAUDE.md files and core instructions.
 2. Send your message to the Anthropic API (default model: `claude-sonnet-4-6`).

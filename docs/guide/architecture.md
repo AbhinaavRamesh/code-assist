@@ -1,6 +1,6 @@
 # Architecture
 
-Claude Code is structured as a layered system: a CLI shell wraps a `QueryEngine`, which orchestrates the core **agent loop** — sending messages to the Anthropic API, streaming responses, dispatching tool calls, and looping until the model signals completion.
+code-assist is structured as a layered system: a CLI shell wraps a `QueryEngine`, which orchestrates the core **agent loop** — sending messages to the Anthropic API, streaming responses, dispatching tool calls, and looping until the model signals completion.
 
 ## System Architecture
 
@@ -31,16 +31,16 @@ graph TD
 
 | Module | Path | Responsibility |
 |---|---|---|
-| **cli** | `src/claude_code/cli/` | Click-based entry point, argument parsing |
-| **config** | `src/claude_code/config/` | Settings loading/merging, CLAUDE.md discovery, constants |
-| **core** | `src/claude_code/core/` | `QueryEngine`, `query()` loop, streaming, input processing |
-| **memory** | `src/claude_code/memory/` | Memory file scanning, frontmatter parsing, type definitions |
-| **services** | `src/claude_code/services/` | Anthropic API client, tool execution dispatch, error classification |
-| **tasks** | `src/claude_code/tasks/` | Background task types (local shell, local agent, remote agent) |
-| **tools** | `src/claude_code/tools/` | All built-in tools, tool registry, base protocol/class |
-| **tui** | `src/claude_code/tui/` | Terminal UI widgets and themes (Textual framework) |
-| **types** | `src/claude_code/types/` | Shared types: messages, permissions, hooks, commands, plugins |
-| **utils** | `src/claude_code/utils/` | Auth, cost tracking, logging, token counting, bash parsing |
+| **cli** | `src/code_assist/cli/` | Click-based entry point, argument parsing |
+| **config** | `src/code_assist/config/` | Settings loading/merging, CLAUDE.md discovery, constants |
+| **core** | `src/code_assist/core/` | `QueryEngine`, `query()` loop, streaming, input processing |
+| **memory** | `src/code_assist/memory/` | Memory file scanning, frontmatter parsing, type definitions |
+| **services** | `src/code_assist/services/` | Anthropic API client, tool execution dispatch, error classification |
+| **tasks** | `src/code_assist/tasks/` | Background task types (local shell, local agent, remote agent) |
+| **tools** | `src/code_assist/tools/` | All built-in tools, tool registry, base protocol/class |
+| **tui** | `src/code_assist/tui/` | Terminal UI widgets and themes (Textual framework) |
+| **types** | `src/code_assist/types/` | Shared types: messages, permissions, hooks, commands, plugins |
+| **utils** | `src/code_assist/utils/` | Auth, cost tracking, logging, token counting, bash parsing |
 
 ## Data Flow: Single Turn
 

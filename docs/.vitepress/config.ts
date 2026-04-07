@@ -3,7 +3,7 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 
 export default withMermaid(
   defineConfig({
-    title: 'Claude Code',
+    title: 'code-assist',
     description: 'AI-powered coding assistant - Python package',
     base: '/code-assist/',
     lang: 'en-US',
@@ -14,13 +14,13 @@ export default withMermaid(
       ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
       ['meta', { name: 'theme-color', content: '#D97706' }],
       ['meta', { property: 'og:type', content: 'website' }],
-      ['meta', { property: 'og:title', content: 'Claude Code' }],
+      ['meta', { property: 'og:title', content: 'code-assist' }],
       ['meta', { property: 'og:description', content: 'AI-powered coding assistant - Python package' }],
     ],
 
     themeConfig: {
       logo: '/logo.svg',
-      siteTitle: 'Claude Code',
+      siteTitle: 'code-assist',
 
       search: {
         provider: 'local',

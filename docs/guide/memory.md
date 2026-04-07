@@ -1,6 +1,6 @@
 # Memory System
 
-The memory system gives Claude Code persistent context across sessions. It has two layers: **CLAUDE.md files** (instructions injected into the system prompt) and **memory entries** (structured data with frontmatter metadata).
+The memory system gives code-assist persistent context across sessions. It has two layers: **CLAUDE.md files** (instructions injected into the system prompt) and **memory entries** (structured data with frontmatter metadata).
 
 ## Overview
 

@@ -1,6 +1,6 @@
 # MCP Servers
 
-Claude Code has first-class support for the **Model Context Protocol (MCP)** — an open protocol that lets you connect external tool and resource servers. MCP servers extend Claude Code's capabilities without modifying the core codebase.
+code-assist has first-class support for the **Model Context Protocol (MCP)** — an open protocol that lets you connect external tool and resource servers. MCP servers extend code-assist's capabilities without modifying the core codebase.
 
 ## Overview
 
@@ -11,11 +11,11 @@ MCP enables a standardized way for AI models to:
 - **Access resources** (files, database rows, API responses) through a uniform interface
 - **Receive notifications** from long-running server processes
 
-Claude Code acts as an **MCP client**. You configure one or more MCP servers in `settings.json`, and their tools become available alongside the built-in tool set.
+code-assist acts as an **MCP client**. You configure one or more MCP servers in `settings.json`, and their tools become available alongside the built-in tool set.
 
 ```mermaid
 graph LR
-    subgraph Claude Code
+    subgraph code-assist
         CC[MCP Client]
         TR[Tool Registry]
         QL[Query Loop]
@@ -68,7 +68,7 @@ MCP supports two transport mechanisms:
 
 ### stdio (default)
 
-The server communicates over stdin/stdout using JSON-RPC. Claude Code spawns the server as a child process.
+The server communicates over stdin/stdout using JSON-RPC. code-assist spawns the server as a child process.
 
 ```json
 {
@@ -100,7 +100,7 @@ For remote servers, MCP supports HTTP-based transport with server-sent events fo
 
 ## Tool Discovery
 
-When Claude Code starts, it connects to each configured MCP server and discovers available tools:
+When code-assist starts, it connects to each configured MCP server and discovers available tools:
 
 1. **Initialize** — send `initialize` request with client capabilities.
 2. **List tools** — call `tools/list` to enumerate available tools with their names, descriptions, and input schemas.
@@ -131,7 +131,7 @@ Resources are stored in the `ToolUseContext.mcp_resources` dictionary, keyed by 
 
 ### Filesystem Server
 
-Gives Claude Code controlled access to specific directories:
+Gives code-assist controlled access to specific directories:
 
 ```json
 {
@@ -276,7 +276,7 @@ MCP tools go through the same permission system as built-in tools. You can write
 The tool name format for MCP tools is `mcp__<server>__<tool>`.
 
 ::: tip
-MCP servers run as separate processes. They are started when Claude Code initializes and stopped when the session ends. Long-running servers (like database connections) maintain state across tool calls.
+MCP servers run as separate processes. They are started when code-assist initializes and stopped when the session ends. Long-running servers (like database connections) maintain state across tool calls.
 :::
 
 ::: warning

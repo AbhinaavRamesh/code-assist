@@ -1,6 +1,6 @@
 # Hooks
 
-Hooks let you run shell commands at specific points in the Claude Code lifecycle. They can approve or deny tool use, modify inputs and outputs, inject context, or trigger external workflows.
+Hooks let you run shell commands at specific points in the code-assist lifecycle. They can approve or deny tool use, modify inputs and outputs, inject context, or trigger external workflows.
 
 ## Hook Events
 
@@ -282,5 +282,5 @@ Hooks are executed sequentially in the order they appear in the configuration ar
 :::
 
 ::: warning
-Hook commands run with the same permissions as the Claude Code process. Be careful with hook scripts that accept untrusted input from `tool_input` or `user_prompt` fields.
+Hook commands run with the same permissions as the code-assist process. Be careful with hook scripts that accept untrusted input from `tool_input` or `user_prompt` fields.
 :::

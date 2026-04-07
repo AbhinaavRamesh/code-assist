@@ -1,6 +1,6 @@
 # Agents
 
-Claude Code supports multi-agent architectures where the main agent can spawn **sub-agents** to work on focused tasks in isolated contexts. Sub-agents have full access to the tool ecosystem and can run concurrently.
+code-assist supports multi-agent architectures where the main agent can spawn **sub-agents** to work on focused tasks in isolated contexts. Sub-agents have full access to the tool ecosystem and can run concurrently.
 
 ## Agent Architecture
 
@@ -163,7 +163,7 @@ sequenceDiagram
 
 ## Swarm Mode
 
-For complex tasks requiring multiple agents working in parallel, Claude Code supports **swarm mode**. In swarm mode, the main agent acts as an orchestrator:
+For complex tasks requiring multiple agents working in parallel, code-assist supports **swarm mode**. In swarm mode, the main agent acts as an orchestrator:
 
 1. **Decompose** — the main agent breaks the task into subtasks.
 2. **Dispatch** — each subtask is assigned to a sub-agent.

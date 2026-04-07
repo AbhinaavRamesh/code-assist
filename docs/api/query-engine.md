@@ -1,8 +1,8 @@
 # QueryEngine
 
-`QueryEngine` is the primary API for interacting with Claude Code programmatically. It wraps the core agent loop, handles system prompt assembly, manages conversation history, and streams typed events to the caller.
+`QueryEngine` is the primary API for interacting with code-assist programmatically. It wraps the core agent loop, handles system prompt assembly, manages conversation history, and streams typed events to the caller.
 
-**Module:** `claude_code.core.query_engine`
+**Module:** `code_assist.core.query_engine`
 
 ## Class: QueryEngine
 
@@ -219,8 +219,8 @@ engine = QueryEngine(config)
 ### Restricted tools with append prompt
 
 ```python
-from claude_code.tools.file_read.file_read_tool import FileReadTool
-from claude_code.tools.grep_tool.grep_tool import GrepTool
+from code_assist.tools.file_read.file_read_tool import FileReadTool
+from code_assist.tools.grep_tool.grep_tool import GrepTool
 
 config = QueryEngineConfig(
     tools=[FileReadTool(), GrepTool()],
