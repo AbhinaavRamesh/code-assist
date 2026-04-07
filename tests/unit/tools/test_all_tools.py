@@ -13,14 +13,14 @@ from unittest.mock import MagicMock
 import pytest
 from pydantic import BaseModel
 
-from claude_code.tools.base import (
+from code_assist.tools.base import (
     CanUseToolFn,
     DescriptionOptions,
     ToolDef,
     ToolResult,
     ToolUseContext,
 )
-from claude_code.types.message import AssistantMessage
+from code_assist.types.message import AssistantMessage
 
 
 # ---------------------------------------------------------------------------
@@ -62,13 +62,13 @@ def _noop_can_use(*_a: Any, **_kw: Any) -> Any:
 
 class TestTaskCreateTool:
     def test_instantiation(self) -> None:
-        from claude_code.tools.task_tools.task_create import TaskCreateTool
+        from code_assist.tools.task_tools.task_create import TaskCreateTool
         tool = TaskCreateTool()
         assert tool.name == "TaskCreate"
 
     @pytest.mark.asyncio
     async def test_create_task(self) -> None:
-        from claude_code.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
+        from code_assist.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
         tool = TaskCreateTool()
         ctx = _make_context()
         inp = TaskCreateInput(subject="Build feature", description="Implement X")
@@ -82,7 +82,7 @@ class TestTaskCreateTool:
 
     @pytest.mark.asyncio
     async def test_validation_empty_subject(self) -> None:
-        from claude_code.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
+        from code_assist.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
         tool = TaskCreateTool()
         ctx = _make_context()
         inp = TaskCreateInput(subject="  ", description="test")
@@ -93,7 +93,7 @@ class TestTaskCreateTool:
 class TestTaskGetTool:
     @pytest.mark.asyncio
     async def test_not_found(self) -> None:
-        from claude_code.tools.task_tools.task_get import TaskGetInput, TaskGetTool
+        from code_assist.tools.task_tools.task_get import TaskGetInput, TaskGetTool
         tool = TaskGetTool()
         ctx = _make_context()
         inp = TaskGetInput(task_id="nonexistent")
@@ -102,8 +102,8 @@ class TestTaskGetTool:
 
     @pytest.mark.asyncio
     async def test_found(self) -> None:
-        from claude_code.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
-        from claude_code.tools.task_tools.task_get import TaskGetInput, TaskGetTool
+        from code_assist.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
+        from code_assist.tools.task_tools.task_get import TaskGetInput, TaskGetTool
         ctx = _make_context()
         # Create a task first
         create = TaskCreateTool()
@@ -122,8 +122,8 @@ class TestTaskGetTool:
 class TestTaskUpdateTool:
     @pytest.mark.asyncio
     async def test_update_status(self) -> None:
-        from claude_code.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
-        from claude_code.tools.task_tools.task_update import TaskUpdateInput, TaskUpdateTool
+        from code_assist.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
+        from code_assist.tools.task_tools.task_update import TaskUpdateInput, TaskUpdateTool
         ctx = _make_context()
         created = await TaskCreateTool().call(
             TaskCreateInput(subject="X"), ctx, _noop_can_use, _make_parent_msg()
@@ -139,7 +139,7 @@ class TestTaskUpdateTool:
 class TestTaskListTool:
     @pytest.mark.asyncio
     async def test_empty(self) -> None:
-        from claude_code.tools.task_tools.task_list import TaskListInput, TaskListTool
+        from code_assist.tools.task_tools.task_list import TaskListInput, TaskListTool
         tool = TaskListTool()
         ctx = _make_context()
         result = await tool.call(TaskListInput(), ctx, _noop_can_use, _make_parent_msg())
@@ -147,8 +147,8 @@ class TestTaskListTool:
 
     @pytest.mark.asyncio
     async def test_lists_created_tasks(self) -> None:
-        from claude_code.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
-        from claude_code.tools.task_tools.task_list import TaskListInput, TaskListTool
+        from code_assist.tools.task_tools.task_create import TaskCreateInput, TaskCreateTool
+        from code_assist.tools.task_tools.task_list import TaskListInput, TaskListTool
         ctx = _make_context()
         await TaskCreateTool().call(
             TaskCreateInput(subject="A"), ctx, _noop_can_use, _make_parent_msg()
@@ -165,7 +165,7 @@ class TestTaskListTool:
 class TestTaskStopTool:
     @pytest.mark.asyncio
     async def test_stop_not_found(self) -> None:
-        from claude_code.tools.task_tools.task_stop import TaskStopInput, TaskStopTool
+        from code_assist.tools.task_tools.task_stop import TaskStopInput, TaskStopTool
         tool = TaskStopTool()
         ctx = _make_context()
         result = await tool.call(
@@ -177,7 +177,7 @@ class TestTaskStopTool:
 class TestTaskOutputTool:
     @pytest.mark.asyncio
     async def test_not_found(self) -> None:
-        from claude_code.tools.task_tools.task_output import TaskOutputInput, TaskOutputTool
+        from code_assist.tools.task_tools.task_output import TaskOutputInput, TaskOutputTool
         tool = TaskOutputTool()
         ctx = _make_context()
         result = await tool.call(
@@ -194,13 +194,13 @@ class TestTaskOutputTool:
 
 class TestAgentTool:
     def test_instantiation(self) -> None:
-        from claude_code.tools.agent_tool.agent_tool import AgentTool
+        from code_assist.tools.agent_tool.agent_tool import AgentTool
         tool = AgentTool()
         assert tool.name == "Agent"
 
     @pytest.mark.asyncio
     async def test_background_mode(self) -> None:
-        from claude_code.tools.agent_tool.agent_tool import AgentTool, AgentToolInput
+        from code_assist.tools.agent_tool.agent_tool import AgentTool, AgentToolInput
         tool = AgentTool()
         ctx = _make_context()
         inp = AgentToolInput(
@@ -214,7 +214,7 @@ class TestAgentTool:
 
     @pytest.mark.asyncio
     async def test_foreground_mode(self) -> None:
-        from claude_code.tools.agent_tool.agent_tool import AgentTool, AgentToolInput
+        from code_assist.tools.agent_tool.agent_tool import AgentTool, AgentToolInput
         tool = AgentTool()
         ctx = _make_context()
         inp = AgentToolInput(description="Test", prompt="Hello world")
@@ -224,7 +224,7 @@ class TestAgentTool:
 
     @pytest.mark.asyncio
     async def test_validation_empty_prompt(self) -> None:
-        from claude_code.tools.agent_tool.agent_tool import AgentTool, AgentToolInput
+        from code_assist.tools.agent_tool.agent_tool import AgentTool, AgentToolInput
         tool = AgentTool()
         ctx = _make_context()
         inp = AgentToolInput(description="Test", prompt="  ")
@@ -240,7 +240,7 @@ class TestAgentTool:
 class TestEnterPlanModeTool:
     @pytest.mark.asyncio
     async def test_enter_plan_mode(self) -> None:
-        from claude_code.tools.plan_mode.enter_plan_mode import EnterPlanModeInput, EnterPlanModeTool
+        from code_assist.tools.plan_mode.enter_plan_mode import EnterPlanModeInput, EnterPlanModeTool
         tool = EnterPlanModeTool()
         ctx = _make_context(state={"toolPermissionContext": {"mode": "default"}})
         result = await tool.call(
@@ -252,7 +252,7 @@ class TestEnterPlanModeTool:
 
     @pytest.mark.asyncio
     async def test_blocked_in_agent_context(self) -> None:
-        from claude_code.tools.plan_mode.enter_plan_mode import EnterPlanModeInput, EnterPlanModeTool
+        from code_assist.tools.plan_mode.enter_plan_mode import EnterPlanModeInput, EnterPlanModeTool
         tool = EnterPlanModeTool()
         ctx = _make_context(agent_id="sub-1")
         v = await tool.validate_input(EnterPlanModeInput(), ctx)
@@ -262,7 +262,7 @@ class TestEnterPlanModeTool:
 class TestExitPlanModeTool:
     @pytest.mark.asyncio
     async def test_exit_plan_mode(self) -> None:
-        from claude_code.tools.plan_mode.exit_plan_mode import ExitPlanModeInput, ExitPlanModeTool
+        from code_assist.tools.plan_mode.exit_plan_mode import ExitPlanModeInput, ExitPlanModeTool
         tool = ExitPlanModeTool()
         ctx = _make_context(
             state={"toolPermissionContext": {"mode": "plan", "previousMode": "default"}}
@@ -283,7 +283,7 @@ class TestExitPlanModeTool:
 class TestAskUserQuestionTool:
     @pytest.mark.asyncio
     async def test_with_answers(self) -> None:
-        from claude_code.tools.ask_user.ask_user_question import (
+        from code_assist.tools.ask_user.ask_user_question import (
             AskUserQuestionInput,
             AskUserQuestionTool,
             Question,
@@ -309,7 +309,7 @@ class TestAskUserQuestionTool:
 
     @pytest.mark.asyncio
     async def test_uniqueness_validation(self) -> None:
-        from claude_code.tools.ask_user.ask_user_question import (
+        from code_assist.tools.ask_user.ask_user_question import (
             AskUserQuestionInput,
             AskUserQuestionTool,
             Question,
@@ -348,13 +348,13 @@ class TestAskUserQuestionTool:
 
 class TestMCPTool:
     def test_instantiation(self) -> None:
-        from claude_code.tools.mcp_tool.mcp_tool import MCPTool
+        from code_assist.tools.mcp_tool.mcp_tool import MCPTool
         tool = MCPTool()
         assert tool.is_mcp is True
 
     @pytest.mark.asyncio
     async def test_server_not_found(self) -> None:
-        from claude_code.tools.mcp_tool.mcp_tool import MCPTool, MCPToolInput
+        from code_assist.tools.mcp_tool.mcp_tool import MCPTool, MCPToolInput
         tool = MCPTool()
         ctx = _make_context()
         inp = MCPToolInput(server_name="fake", tool_name="test", arguments={})
@@ -370,7 +370,7 @@ class TestMCPTool:
 class TestSkillTool:
     @pytest.mark.asyncio
     async def test_skill_not_found(self) -> None:
-        from claude_code.tools.skill_tool.skill_tool import SkillTool, SkillToolInput
+        from code_assist.tools.skill_tool.skill_tool import SkillTool, SkillToolInput
         tool = SkillTool()
         ctx = _make_context()
         inp = SkillToolInput(skill="nonexistent-skill-xyz")
@@ -385,13 +385,13 @@ class TestSkillTool:
 
 class TestEnterWorktreeTool:
     def test_instantiation(self) -> None:
-        from claude_code.tools.worktree.enter_worktree import EnterWorktreeTool
+        from code_assist.tools.worktree.enter_worktree import EnterWorktreeTool
         tool = EnterWorktreeTool()
         assert tool.name == "EnterWorktree"
 
     @pytest.mark.asyncio
     async def test_invalid_slug(self) -> None:
-        from claude_code.tools.worktree.enter_worktree import EnterWorktreeInput, EnterWorktreeTool
+        from code_assist.tools.worktree.enter_worktree import EnterWorktreeInput, EnterWorktreeTool
         tool = EnterWorktreeTool()
         ctx = _make_context()
         inp = EnterWorktreeInput(name="invalid name with spaces!!!")
@@ -402,7 +402,7 @@ class TestEnterWorktreeTool:
 class TestExitWorktreeTool:
     @pytest.mark.asyncio
     async def test_not_in_worktree(self) -> None:
-        from claude_code.tools.worktree.exit_worktree import ExitWorktreeInput, ExitWorktreeTool
+        from code_assist.tools.worktree.exit_worktree import ExitWorktreeInput, ExitWorktreeTool
         tool = ExitWorktreeTool()
         ctx = _make_context()
         v = await tool.validate_input(ExitWorktreeInput(action="keep"), ctx)
@@ -417,7 +417,7 @@ class TestExitWorktreeTool:
 class TestSendMessageTool:
     @pytest.mark.asyncio
     async def test_direct_message(self) -> None:
-        from claude_code.tools.send_message.send_message_tool import SendMessageInput, SendMessageTool
+        from code_assist.tools.send_message.send_message_tool import SendMessageInput, SendMessageTool
         tool = SendMessageTool()
         ctx = _make_context(state={"mailboxes": {}})
         inp = SendMessageInput(to="alice", message="Hello!", summary="Greet")
@@ -429,7 +429,7 @@ class TestSendMessageTool:
 
     @pytest.mark.asyncio
     async def test_broadcast_no_teammates(self) -> None:
-        from claude_code.tools.send_message.send_message_tool import SendMessageInput, SendMessageTool
+        from code_assist.tools.send_message.send_message_tool import SendMessageInput, SendMessageTool
         tool = SendMessageTool()
         ctx = _make_context(state={"mailboxes": {}})
         inp = SendMessageInput(to="*", message="Hello all!")
@@ -445,7 +445,7 @@ class TestSendMessageTool:
 class TestTeamCreateTool:
     @pytest.mark.asyncio
     async def test_create_team(self) -> None:
-        from claude_code.tools.team_tools.team_create import TeamCreateInput, TeamCreateTool
+        from code_assist.tools.team_tools.team_create import TeamCreateInput, TeamCreateTool
         tool = TeamCreateTool()
         ctx = _make_context()
         inp = TeamCreateInput(team_name="alpha", description="Test team")
@@ -456,7 +456,7 @@ class TestTeamCreateTool:
 
     @pytest.mark.asyncio
     async def test_duplicate_team(self) -> None:
-        from claude_code.tools.team_tools.team_create import TeamCreateInput, TeamCreateTool
+        from code_assist.tools.team_tools.team_create import TeamCreateInput, TeamCreateTool
         tool = TeamCreateTool()
         ctx = _make_context()
         await tool.call(
@@ -471,7 +471,7 @@ class TestTeamCreateTool:
 class TestTeamDeleteTool:
     @pytest.mark.asyncio
     async def test_no_team(self) -> None:
-        from claude_code.tools.team_tools.team_delete import TeamDeleteInput, TeamDeleteTool
+        from code_assist.tools.team_tools.team_delete import TeamDeleteInput, TeamDeleteTool
         tool = TeamDeleteTool()
         ctx = _make_context()
         result = await tool.call(
@@ -488,7 +488,7 @@ class TestTeamDeleteTool:
 class TestConfigTool:
     @pytest.mark.asyncio
     async def test_get_unknown(self) -> None:
-        from claude_code.tools.config_tool.config_tool import ConfigTool, ConfigToolInput
+        from code_assist.tools.config_tool.config_tool import ConfigTool, ConfigToolInput
         tool = ConfigTool()
         ctx = _make_context()
         result = await tool.call(
@@ -499,7 +499,7 @@ class TestConfigTool:
 
     @pytest.mark.asyncio
     async def test_get_theme(self) -> None:
-        from claude_code.tools.config_tool.config_tool import ConfigTool, ConfigToolInput
+        from code_assist.tools.config_tool.config_tool import ConfigTool, ConfigToolInput
         tool = ConfigTool()
         ctx = _make_context()
         result = await tool.call(
@@ -510,7 +510,7 @@ class TestConfigTool:
         assert result.data["operation"] == "get"
 
     def test_is_read_only_for_get(self) -> None:
-        from claude_code.tools.config_tool.config_tool import ConfigTool, ConfigToolInput
+        from code_assist.tools.config_tool.config_tool import ConfigTool, ConfigToolInput
         tool = ConfigTool()
         assert tool.is_read_only(ConfigToolInput(setting="theme")) is True
         assert tool.is_read_only(ConfigToolInput(setting="theme", value="dark")) is False
@@ -524,7 +524,7 @@ class TestConfigTool:
 class TestTodoWriteTool:
     @pytest.mark.asyncio
     async def test_write_todos(self) -> None:
-        from claude_code.tools.todo_write.todo_write_tool import TodoItem, TodoWriteInput, TodoWriteTool
+        from code_assist.tools.todo_write.todo_write_tool import TodoItem, TodoWriteInput, TodoWriteTool
         tool = TodoWriteTool()
         ctx = _make_context(state={"todos": {}})
         inp = TodoWriteInput(
@@ -539,7 +539,7 @@ class TestTodoWriteTool:
 
     @pytest.mark.asyncio
     async def test_all_done_clears(self) -> None:
-        from claude_code.tools.todo_write.todo_write_tool import TodoItem, TodoWriteInput, TodoWriteTool
+        from code_assist.tools.todo_write.todo_write_tool import TodoItem, TodoWriteInput, TodoWriteTool
         tool = TodoWriteTool()
         ctx = _make_context(state={"todos": {}})
         inp = TodoWriteInput(
@@ -560,7 +560,7 @@ class TestTodoWriteTool:
 class TestCronCreateTool:
     @pytest.mark.asyncio
     async def test_create_cron(self) -> None:
-        from claude_code.tools.cron_tools.cron_create import CronCreateInput, CronCreateTool
+        from code_assist.tools.cron_tools.cron_create import CronCreateInput, CronCreateTool
         tool = CronCreateTool()
         ctx = _make_context(state={"cron_jobs": {}})
         inp = CronCreateInput(schedule="*/5 * * * *", command="echo hello")
@@ -571,7 +571,7 @@ class TestCronCreateTool:
 
     @pytest.mark.asyncio
     async def test_invalid_cron_expression(self) -> None:
-        from claude_code.tools.cron_tools.cron_create import CronCreateInput, CronCreateTool
+        from code_assist.tools.cron_tools.cron_create import CronCreateInput, CronCreateTool
         tool = CronCreateTool()
         ctx = _make_context()
         inp = CronCreateInput(schedule="bad", command="test")
@@ -582,7 +582,7 @@ class TestCronCreateTool:
 class TestCronDeleteTool:
     @pytest.mark.asyncio
     async def test_delete_not_found(self) -> None:
-        from claude_code.tools.cron_tools.cron_delete import CronDeleteInput, CronDeleteTool
+        from code_assist.tools.cron_tools.cron_delete import CronDeleteInput, CronDeleteTool
         tool = CronDeleteTool()
         ctx = _make_context(state={"cron_jobs": {}})
         result = await tool.call(
@@ -594,7 +594,7 @@ class TestCronDeleteTool:
 class TestCronListTool:
     @pytest.mark.asyncio
     async def test_empty_list(self) -> None:
-        from claude_code.tools.cron_tools.cron_list import CronListInput, CronListTool
+        from code_assist.tools.cron_tools.cron_list import CronListInput, CronListTool
         tool = CronListTool()
         ctx = _make_context(state={"cron_jobs": {}})
         result = await tool.call(
@@ -610,13 +610,13 @@ class TestCronListTool:
 
 class TestLSPTool:
     def test_instantiation(self) -> None:
-        from claude_code.tools.lsp_tool.lsp_tool import LSPTool
+        from code_assist.tools.lsp_tool.lsp_tool import LSPTool
         tool = LSPTool()
         assert tool.is_lsp is True
 
     @pytest.mark.asyncio
     async def test_no_lsp_server(self, tmp_path) -> None:
-        from claude_code.tools.lsp_tool.lsp_tool import LSPTool, LSPToolInput
+        from code_assist.tools.lsp_tool.lsp_tool import LSPTool, LSPToolInput
         tool = LSPTool()
         ctx = _make_context()
         # Create a real file for the test
@@ -635,7 +635,7 @@ class TestLSPTool:
 
 class TestRegistry:
     def test_all_tools_importable(self) -> None:
-        from claude_code.tools.registry import get_all_tools
+        from code_assist.tools.registry import get_all_tools
         tools = get_all_tools()
         assert len(tools) >= 33
         names = [t.name for t in tools]
@@ -650,7 +650,7 @@ class TestRegistry:
             assert expected in names, f"{expected} missing from registry"
 
     def test_no_duplicate_names(self) -> None:
-        from claude_code.tools.registry import get_all_tools
+        from code_assist.tools.registry import get_all_tools
         tools = get_all_tools()
         names = [t.name for t in tools]
         assert len(names) == len(set(names)), f"Duplicate names: {[n for n in names if names.count(n) > 1]}"

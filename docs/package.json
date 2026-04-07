@@ -1,5 +1,5 @@
 {
-  "name": "claude-code-docs",
+  "name": "code-assist-docs",
   "private": true,
   "type": "module",
   "scripts": {

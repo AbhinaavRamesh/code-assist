@@ -1,7 +1,7 @@
 [project]
-name = "claude-code-py"
-version = "0.1.1"
-description = "AI-powered coding assistant - Python implementation of Claude Code"
+name = "code-assist"
+version = "0.1.2"
+description = "AI-powered coding assistant"
 requires-python = ">=3.13"
 license = "MIT"
 authors = [{ name = "Abhinaav Ramesh" }]
@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.scripts]
-claude-code = "claude_code.cli.main:cli"
+code-assist = "code_assist.cli.main:cli"
 
 [project.optional-dependencies]
 dev = [
@@ -45,7 +45,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/claude_code"]
+packages = ["src/code_assist"]
 
 [tool.ruff]
 target-version = "py313"
@@ -59,7 +59,7 @@ python_version = "3.13"
 strict = true
 warn_return_any = true
 disallow_untyped_defs = true
-packages = ["claude_code"]
+packages = ["code_assist"]
 mypy_path = "src"
 
 [tool.pytest.ini_options]

@@ -11,7 +11,7 @@ graph TB
     end
 
     subgraph CLAUDE.md Layer
-        MG[Managed<br/>/etc/claude-code/CLAUDE.md]
+        MG[Managed<br/>/etc/code-assist/CLAUDE.md]
         MU[User<br/>~/.claude/CLAUDE.md]
         MP[Project<br/>CLAUDE.md / .claude/CLAUDE.md]
         MR[Rules<br/>.claude/rules/*.md]
@@ -42,7 +42,7 @@ CLAUDE.md files are the primary memory mechanism. They are plain Markdown, disco
 
 ### Discovery Priority
 
-1. `/etc/claude-code/CLAUDE.md` — Organization-managed instructions
+1. `/etc/code-assist/CLAUDE.md` — Organization-managed instructions
 2. `~/.claude/CLAUDE.md` — User's global instructions
 3. `CLAUDE.md` or `.claude/CLAUDE.md` — Project instructions (git-tracked)
 4. `.claude/rules/*.md` — Modular project rules (git-tracked)
@@ -117,7 +117,7 @@ type: user
 | **Reference** | `reference` | Reference material (API docs, schemas, examples) |
 
 ```python
-from claude_code.memory.memory_types import MemoryType
+from code_assist.memory.memory_types import MemoryType
 
 class MemoryType(StrEnum):
     USER = "user"
@@ -161,7 +161,7 @@ class MemoryFileInfo:
 ### CLAUDE.md discovery
 
 ```python
-from claude_code.config.claude_md import get_memory_files
+from code_assist.config.claude_md import get_memory_files
 
 files = get_memory_files(
     project_root="/path/to/project",
@@ -177,7 +177,7 @@ for f in files:
 ### Memory entry scanning
 
 ```python
-from claude_code.memory.memory_scan import scan_memory_files
+from code_assist.memory.memory_scan import scan_memory_files
 
 entries = scan_memory_files("/path/to/project")
 for entry in entries:
@@ -188,7 +188,7 @@ for entry in entries:
 ### Frontmatter parsing
 
 ```python
-from claude_code.memory.memory_scan import parse_memory_frontmatter
+from code_assist.memory.memory_scan import parse_memory_frontmatter
 
 content = """---
 name: test-rules
@@ -208,7 +208,7 @@ meta = parse_memory_frontmatter(content)
 The memory directory is derived from the project root path:
 
 ```python
-from claude_code.config.constants import get_memory_dir
+from code_assist.config.constants import get_memory_dir
 
 mem_dir = get_memory_dir("/home/user/project")
 # ~/.claude/projects/-home-user-project/
@@ -221,7 +221,7 @@ The project path is sanitized by replacing `/` and `\` with `-`.
 Memory files exceeding **40,000 characters** (`MAX_MEMORY_CHARACTER_COUNT`) are flagged as oversized. Check for this:
 
 ```python
-from claude_code.config.claude_md import get_memory_files, get_large_memory_files
+from code_assist.config.claude_md import get_memory_files, get_large_memory_files
 
 files = get_memory_files("/path/to/project")
 large = get_large_memory_files(files)

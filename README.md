@@ -1,8 +1,8 @@
-# claude-code
+# code-assist
 
 A Python 3.13 AI-powered coding assistant package.
 
-**Inspired by [Claude Code](https://docs.anthropic.com/en/docs/claude-code) by [Anthropic](https://www.anthropic.com/). All original concepts and intellectual property belong to Anthropic.**
+**Inspired by [Claude Code](https://docs.anthropic.com/en/docs/code-assist) by [Anthropic](https://www.anthropic.com/). All original concepts and intellectual property belong to Anthropic.**
 
 **Research and educational purposes only. No commercial use permitted.**
 
@@ -10,7 +10,7 @@ A Python 3.13 AI-powered coding assistant package.
 
 ## Overview
 
-`claude-code-py` is a fully-featured AI coding assistant built in Python, featuring:
+`code-assist` is a fully-featured AI coding assistant built in Python, featuring:
 
 - **33 tools** - File operations, shell execution, search, MCP, agents, tasks, and more
 - **Interactive TUI** - Textual-based terminal UI with markdown rendering, vi mode, themes
@@ -26,33 +26,33 @@ A Python 3.13 AI-powered coding assistant package.
 ## Quick Start
 
 ```bash
-pip install claude-code-py
+pip install code-assist
 ```
 
 ```bash
 export ANTHROPIC_API_KEY="sk-ant-..."
 
-claude-code --version
-claude-code -p "explain this codebase"
-claude-code  # interactive mode
+code-assist --version
+code-assist -p "explain this codebase"
+code-assist  # interactive mode
 ```
 
 ## Documentation
 
-Full docs with architecture diagrams, tool reference, and API: **https://abhinaavramesh.github.io/claude-code/**
+Full docs with architecture diagrams, tool reference, and API: **https://abhinaavramesh.github.io/code-assist/**
 
 ## Development
 
 ```bash
-git clone https://github.com/AbhinaavRamesh/claude-code.git
-cd claude-code
+git clone https://github.com/AbhinaavRamesh/code-assist.git
+cd code-assist
 uv sync --extra dev
 uv run pytest
 ```
 
 ## Credits & Attribution
 
-This project is inspired by [Claude Code](https://docs.anthropic.com/en/docs/claude-code) by [Anthropic](https://www.anthropic.com/). Claude Code is a product of Anthropic. All original concepts, design patterns, and intellectual property belong to **Anthropic and Claude**. This Python implementation is an independent educational project and is **not affiliated with, endorsed by, or connected to Anthropic in any way**.
+This project is inspired by [Claude Code](https://docs.anthropic.com/en/docs/code-assist) by [Anthropic](https://www.anthropic.com/). Claude Code is a product of Anthropic. All original concepts, design patterns, and intellectual property belong to **Anthropic and Claude**. This Python implementation is an independent educational project and is **not affiliated with, endorsed by, or connected to Anthropic in any way**.
 
 ## Disclaimer
 
