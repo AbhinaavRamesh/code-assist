@@ -1,6 +1,6 @@
 # Skills & Plugins
 
-Claude Code is extensible through two mechanisms: **skills** (reusable prompt-based workflows) and **plugins** (code packages that contribute tools, commands, and hooks).
+code-assist is extensible through two mechanisms: **skills** (reusable prompt-based workflows) and **plugins** (code packages that contribute tools, commands, and hooks).
 
 ## Skills Overview
 
@@ -125,7 +125,7 @@ Each file is a JSON object with the same schema as a skill entry in `settings.js
 
 ## Bundled Skills
 
-Claude Code ships with several built-in skills:
+code-assist ships with several built-in skills:
 
 | Skill | Description |
 |---|---|
@@ -141,7 +141,7 @@ Bundled skills are loaded from `CommandLoadedFrom.BUNDLED` and cannot be overrid
 
 ## Plugin System
 
-Plugins are Python packages that extend Claude Code with custom tools, commands, and hooks.
+Plugins are Python packages that extend code-assist with custom tools, commands, and hooks.
 
 ### Plugin Manifest
 
@@ -251,9 +251,9 @@ Commands (including skill-generated ones) are tracked by their source:
 | MCP | `mcp` | Provided by MCP servers |
 
 ::: tip
-Skills are the easiest way to extend Claude Code for your workflow. Start with a skill before building a full plugin — most use cases can be covered by a well-crafted prompt with tool restrictions.
+Skills are the easiest way to extend code-assist for your workflow. Start with a skill before building a full plugin — most use cases can be covered by a well-crafted prompt with tool restrictions.
 :::
 
 ::: warning
-Plugins run with the same privileges as Claude Code itself. Only install plugins from trusted sources. Review the plugin manifest to understand which tools, hooks, and commands it registers.
+Plugins run with the same privileges as code-assist itself. Only install plugins from trusted sources. Review the plugin manifest to understand which tools, hooks, and commands it registers.
 :::

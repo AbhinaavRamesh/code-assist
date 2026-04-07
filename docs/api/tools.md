@@ -2,7 +2,7 @@
 
 This page covers the `Tool` protocol, the `ToolDef` base class, and how to build custom tools.
 
-**Module:** `claude_code.tools.base`
+**Module:** `code_assist.tools.base`
 
 ## Tool Protocol
 
@@ -181,11 +181,11 @@ class CountLinesInput(BaseModel):
 import re
 from pathlib import Path
 
-from claude_code.tools.base import (
+from code_assist.tools.base import (
     ToolDef, ToolResult, ToolUseContext,
     CanUseToolFn, ToolCallProgress, DescriptionOptions,
 )
-from claude_code.types.message import AssistantMessage
+from code_assist.types.message import AssistantMessage
 
 
 class CountLinesTool(ToolDef):
@@ -243,7 +243,7 @@ Add it to the registry:
 
 ```python
 # In tools/registry.py
-from claude_code.tools.count_lines import CountLinesTool
+from code_assist.tools.count_lines import CountLinesTool
 
 def get_all_tools() -> Tools:
     tools: Tools = [
@@ -287,7 +287,7 @@ async def validate_input(
 Override `check_permissions()` for tool-specific permission logic:
 
 ```python
-from claude_code.types.permissions import PermissionResult, PermissionDenyDecision
+from code_assist.types.permissions import PermissionResult, PermissionDenyDecision
 
 async def check_permissions(
     self, input: BaseModel, context: ToolUseContext
@@ -304,7 +304,7 @@ async def check_permissions(
 ## Utility Functions
 
 ```python
-from claude_code.tools.base import tool_matches_name, find_tool_by_name
+from code_assist.tools.base import tool_matches_name, find_tool_by_name
 
 # Check if a tool matches a name or alias
 matches = tool_matches_name(my_tool, "CountLines")  # True

@@ -1,6 +1,6 @@
 # Tools Reference
 
-Tools are the actions Claude Code can take on your behalf. Every tool implements the `Tool` protocol, accepts pydantic-validated input, and returns a `ToolResult`.
+Tools are the actions code-assist can take on your behalf. Every tool implements the `Tool` protocol, accepts pydantic-validated input, and returns a `ToolResult`.
 
 ## Built-in Tools
 
@@ -148,8 +148,8 @@ You can create custom tools by subclassing `ToolDef`:
 
 ```python
 from pydantic import BaseModel
-from claude_code.tools.base import ToolDef, ToolResult, ToolUseContext, CanUseToolFn, ToolCallProgress
-from claude_code.types.message import AssistantMessage
+from code_assist.tools.base import ToolDef, ToolResult, ToolUseContext, CanUseToolFn, ToolCallProgress
+from code_assist.types.message import AssistantMessage
 
 
 class MyToolInput(BaseModel):

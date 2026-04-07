@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: Claude Code
+  name: code-assist
   text: AI-Powered Coding Assistant
   tagline: A Python 3.13 implementation of an agentic coding assistant with tool use, memory, and multi-agent orchestration.
   actions:

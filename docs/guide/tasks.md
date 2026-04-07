@@ -1,6 +1,6 @@
 # Tasks
 
-Tasks are background operations managed by Claude Code. They provide a way to run long-running processes, sub-agents, and scheduled work alongside the main interactive session.
+Tasks are background operations managed by code-assist. They provide a way to run long-running processes, sub-agents, and scheduled work alongside the main interactive session.
 
 ## Task Types
 
@@ -75,7 +75,7 @@ class Task:
 Task IDs are composed of a type prefix and a short UUID:
 
 ```python
-from claude_code.tasks.types import generate_task_id, TaskType
+from code_assist.tasks.types import generate_task_id, TaskType
 
 task_id = generate_task_id(TaskType.LOCAL_AGENT)
 # e.g., "a-1f3c2b8a"
@@ -210,7 +210,7 @@ The scheduler respects these dependencies when deciding which tasks to execute.
 Large task outputs are persisted to disk:
 
 ```python
-from claude_code.config.constants import get_task_output_dir
+from code_assist.config.constants import get_task_output_dir
 
 output_dir = get_task_output_dir()
 # ~/.claude/task-output/

@@ -1,14 +1,14 @@
 # API Reference
 
-Claude Code exposes a Python API for programmatic use. The primary entry point is `QueryEngine`, which orchestrates the full agent loop — system prompt assembly, tool filtering, API streaming, and tool execution.
+code-assist exposes a Python API for programmatic use. The primary entry point is `QueryEngine`, which orchestrates the full agent loop — system prompt assembly, tool filtering, API streaming, and tool execution.
 
 ## Quick Start
 
 ```python
 import asyncio
-from claude_code.core.query_engine import QueryEngine, QueryEngineConfig
-from claude_code.core.query import TextEvent, ToolUseEvent, ToolResultEvent, DoneEvent
-from claude_code.tools.registry import get_all_tools
+from code_assist.core.query_engine import QueryEngine, QueryEngineConfig
+from code_assist.core.query import TextEvent, ToolUseEvent, ToolResultEvent, DoneEvent
+from code_assist.tools.registry import get_all_tools
 
 
 async def main():
@@ -45,14 +45,14 @@ asyncio.run(main())
 
 | Module | Import Path | Description |
 |---|---|---|
-| **QueryEngine** | `claude_code.core.query_engine` | High-level orchestrator — the primary API |
-| **query()** | `claude_code.core.query` | Low-level agent loop (async generator) |
-| **Tool Protocol** | `claude_code.tools.base` | `Tool` protocol and `ToolDef` base class |
-| **Tool Registry** | `claude_code.tools.registry` | `get_all_tools()` to assemble tools |
-| **Settings** | `claude_code.config.settings` | `load_merged_settings()` for configuration |
-| **CLAUDE.md** | `claude_code.config.claude_md` | Memory file discovery and context building |
-| **Memory** | `claude_code.memory.memory_scan` | Structured memory entry scanning |
-| **Types** | `claude_code.types.*` | Message, permission, hook, command, plugin types |
+| **QueryEngine** | `code_assist.core.query_engine` | High-level orchestrator — the primary API |
+| **query()** | `code_assist.core.query` | Low-level agent loop (async generator) |
+| **Tool Protocol** | `code_assist.tools.base` | `Tool` protocol and `ToolDef` base class |
+| **Tool Registry** | `code_assist.tools.registry` | `get_all_tools()` to assemble tools |
+| **Settings** | `code_assist.config.settings` | `load_merged_settings()` for configuration |
+| **CLAUDE.md** | `code_assist.config.claude_md` | Memory file discovery and context building |
+| **Memory** | `code_assist.memory.memory_scan` | Structured memory entry scanning |
+| **Types** | `code_assist.types.*` | Message, permission, hook, command, plugin types |
 
 ## Event Types
 
@@ -95,10 +95,10 @@ engine.clear_messages()
 For non-interactive use, configure the engine with explicit API key and restricted tools:
 
 ```python
-from claude_code.tools.base import ToolDef
-from claude_code.tools.file_read.file_read_tool import FileReadTool
-from claude_code.tools.glob_tool.glob_tool import GlobTool
-from claude_code.tools.grep_tool.grep_tool import GrepTool
+from code_assist.tools.base import ToolDef
+from code_assist.tools.file_read.file_read_tool import FileReadTool
+from code_assist.tools.glob_tool.glob_tool import GlobTool
+from code_assist.tools.grep_tool.grep_tool import GrepTool
 
 config = QueryEngineConfig(
     cwd="/path/to/project",

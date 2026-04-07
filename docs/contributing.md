@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to Claude Code. This guide covers development setup, testing, code style, and the pull request process.
+Thank you for your interest in contributing to code-assist. This guide covers development setup, testing, code style, and the pull request process.
 
 ## Development Environment Setup
 
