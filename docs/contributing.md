@@ -13,8 +13,8 @@ Thank you for your interest in contributing to Claude Code. This guide covers de
 ### Clone and install
 
 ```bash
-git clone https://github.com/abhinaavramesh/claude-code.git
-cd claude-code
+git clone https://github.com/abhinaavramesh/code-assist.git
+cd code-assist
 
 # Install with dev dependencies
 uv sync --extra dev
@@ -44,7 +44,7 @@ This sets up automatic linting and formatting on every commit.
 ## Project Structure
 
 ```
-src/claude_code/
+src/code_assist/
   cli/            # Click-based CLI entry point
   config/         # Settings, constants, CLAUDE.md discovery
   core/           # QueryEngine, query loop, streaming
@@ -71,7 +71,7 @@ pytest
 ### With coverage
 
 ```bash
-pytest --cov=claude_code --cov-report=html
+pytest --cov=code_assist --cov-report=html
 open htmlcov/index.html
 ```
 
@@ -203,7 +203,7 @@ All code must pass `mypy --strict`. This means:
 
 ## Adding a New Tool
 
-1. Create `src/claude_code/tools/<name>/` with `__init__.py` and `<name>_tool.py`.
+1. Create `src/code_assist/tools/<name>/` with `__init__.py` and `<name>_tool.py`.
 2. Define a pydantic input schema.
 3. Subclass `ToolDef` and implement `call()` and `input_schema`.
 4. Add the tool to `tools/registry.py` in `get_all_tools()`.

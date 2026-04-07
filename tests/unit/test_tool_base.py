@@ -5,7 +5,7 @@ import asyncio
 import pytest
 from pydantic import BaseModel, Field
 
-from claude_code.tools.base import (
+from code_assist.tools.base import (
     DescriptionOptions,
     SearchOrReadInfo,
     ToolDef,
@@ -15,8 +15,8 @@ from claude_code.tools.base import (
     find_tool_by_name,
     tool_matches_name,
 )
-from claude_code.tools.registry import filter_enabled_tools, get_tool_names
-from claude_code.types.message import AssistantMessage
+from code_assist.tools.registry import filter_enabled_tools, get_tool_names
+from code_assist.types.message import AssistantMessage
 
 
 # ---------------------------------------------------------------------------
@@ -185,7 +185,7 @@ class TestToolResult:
         assert result.context_modifier is None
 
     def test_result_with_messages(self) -> None:
-        from claude_code.types.message import create_system_message
+        from code_assist.types.message import create_system_message
 
         msg = create_system_message("side effect")
         result = ToolResult(data="ok", new_messages=[msg])

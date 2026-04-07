@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from claude_code.core.process_input import ProcessedInput, process_user_input
-from claude_code.core.query import (
+from code_assist.core.process_input import ProcessedInput, process_user_input
+from code_assist.core.query import (
     AssistantMessageEvent,
     DoneEvent,
     ErrorEvent,
@@ -15,9 +15,9 @@ from claude_code.core.query import (
     ToolUseEvent,
     _messages_to_api_format,
 )
-from claude_code.core.query_engine import QueryEngine, QueryEngineConfig
-from claude_code.core.streaming import StreamAccumulator
-from claude_code.types.message import (
+from code_assist.core.query_engine import QueryEngine, QueryEngineConfig
+from code_assist.core.streaming import StreamAccumulator
+from code_assist.types.message import (
     AssistantMessage,
     TextBlock,
     ToolResultBlock,
@@ -27,7 +27,7 @@ from claude_code.types.message import (
     create_assistant_message,
     create_user_message,
 )
-from claude_code.utils.messages import (
+from code_assist.utils.messages import (
     count_tool_uses,
     get_last_text_block,
     get_text_content,

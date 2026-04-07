@@ -3,7 +3,7 @@
 import anthropic
 import pytest
 
-from claude_code.services.api.claude import (
+from code_assist.services.api.claude import (
     APIClientConfig,
     SystemPromptBlock,
     build_system_prompt_param,
@@ -11,30 +11,30 @@ from claude_code.services.api.claude import (
     get_default_betas,
     tool_to_api_schema,
 )
-from claude_code.services.api.errors import (
+from code_assist.services.api.errors import (
     APIErrorType,
     ClassifiedError,
     _extract_token_counts,
     classify_api_error,
 )
-from claude_code.state.bootstrap import reset_bootstrap_state
-from claude_code.types.message import Usage
-from claude_code.utils.context import get_available_tokens, should_compact
-from claude_code.utils.cost_tracker import format_cost, track_usage
-from claude_code.utils.model.cost import (
+from code_assist.state.bootstrap import reset_bootstrap_state
+from code_assist.types.message import Usage
+from code_assist.utils.context import get_available_tokens, should_compact
+from code_assist.utils.cost_tracker import format_cost, track_usage
+from code_assist.utils.model.cost import (
     calculate_cost_usd,
     get_context_window,
     get_max_output_tokens,
     get_pricing,
 )
-from claude_code.utils.model.model import (
+from code_assist.utils.model.model import (
     get_display_name,
     is_opus_model,
     is_sonnet_model,
     resolve_model,
 )
-from claude_code.utils.model.providers import APIProvider, detect_provider
-from claude_code.utils.tokens import rough_token_estimate
+from code_assist.utils.model.providers import APIProvider, detect_provider
+from code_assist.utils.tokens import rough_token_estimate
 
 
 class TestAPIConfig:

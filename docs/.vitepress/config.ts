@@ -5,7 +5,7 @@ export default withMermaid(
   defineConfig({
     title: 'Claude Code',
     description: 'AI-powered coding assistant - Python package',
-    base: '/claude-code/',
+    base: '/code-assist/',
     lang: 'en-US',
     cleanUrls: true,
     lastUpdated: true,
@@ -40,7 +40,7 @@ export default withMermaid(
             { text: 'Contributing', link: '/contributing' },
           ],
         },
-        { text: 'GitHub', link: 'https://github.com/abhinaavramesh/claude-code' },
+        { text: 'GitHub', link: 'https://github.com/abhinaavramesh/code-assist' },
       ],
 
       sidebar: {
@@ -90,11 +90,11 @@ export default withMermaid(
       },
 
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/abhinaavramesh/claude-code' },
+        { icon: 'github', link: 'https://github.com/abhinaavramesh/code-assist' },
       ],
 
       editLink: {
-        pattern: 'https://github.com/abhinaavramesh/claude-code/edit/main/docs/:path',
+        pattern: 'https://github.com/abhinaavramesh/code-assist/edit/main/docs/:path',
         text: 'Edit this page on GitHub',
       },
 

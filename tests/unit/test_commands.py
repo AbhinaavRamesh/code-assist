@@ -6,7 +6,7 @@ from collections.abc import Iterator
 
 import pytest
 
-from claude_code.commands.registry import (
+from code_assist.commands.registry import (
     find_command,
     get_all_commands,
     get_enabled_commands,
@@ -14,7 +14,7 @@ from claude_code.commands.registry import (
     register_command,
     reset_registry,
 )
-from claude_code.types.command import CommandBase, CommandType
+from code_assist.types.command import CommandBase, CommandType
 
 
 @pytest.fixture(autouse=True)
@@ -138,11 +138,11 @@ class TestBuiltinCommands:
 
     def test_all_builtin_commands_registered(self) -> None:
         # Import triggers registration
-        import claude_code.commands  # noqa: F811
+        import code_assist.commands  # noqa: F811
 
         # Re-import doesn't re-register (module cache), but we need the
         # registry populated. Since autouse fixture clears it, we re-register.
-        from claude_code.commands import _ALL_COMMANDS
+        from code_assist.commands import _ALL_COMMANDS
 
         for cmd in _ALL_COMMANDS:
             register_command(cmd)
@@ -160,14 +160,14 @@ class TestBuiltinCommands:
         assert actual_names == expected_names
 
     def test_prompt_commands(self) -> None:
-        from claude_code.commands import compact_command, commit_command, review_command
+        from code_assist.commands import compact_command, commit_command, review_command
 
         assert compact_command.command_type == CommandType.PROMPT
         assert commit_command.command_type == CommandType.PROMPT
         assert review_command.command_type == CommandType.PROMPT
 
     def test_local_commands(self) -> None:
-        from claude_code.commands import (
+        from code_assist.commands import (
             clear_command,
             cost_command,
             doctor_command,
@@ -182,7 +182,7 @@ class TestBuiltinCommands:
             assert cmd.command_type == CommandType.LOCAL
 
     def test_all_user_invocable(self) -> None:
-        from claude_code.commands import _ALL_COMMANDS
+        from code_assist.commands import _ALL_COMMANDS
 
         for cmd in _ALL_COMMANDS:
             assert cmd.user_invocable is True, f"{cmd.name} should be user_invocable"

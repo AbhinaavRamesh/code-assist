@@ -170,7 +170,7 @@ Query and modify a SQLite database:
 
 ### Custom Python MCP Server
 
-Write your own MCP server in Python using the `mcp` library (which is already a dependency of claude-code):
+Write your own MCP server in Python using the `mcp` library (which is already a dependency of code-assist):
 
 ```python
 """my_mcp_server.py - A minimal MCP server."""
