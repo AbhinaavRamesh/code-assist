@@ -27,7 +27,7 @@ uv sync
 ### With pip
 
 ```bash
-pip install code-assist
+pip install code-assist-py
 ```
 
 ### Development install

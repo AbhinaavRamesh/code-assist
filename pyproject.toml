@@ -1,5 +1,5 @@
 [project]
-name = "code-assist"
+name = "code-assist-py"
 version = "0.1.2"
 description = "AI-powered coding assistant"
 requires-python = ">=3.13"

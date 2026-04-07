@@ -26,7 +26,7 @@ A Python 3.13 AI-powered coding assistant package.
 ## Quick Start
 
 ```bash
-pip install code-assist
+pip install code-assist-py
 ```
 
 ```bash
